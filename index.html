@@ -561,6 +561,89 @@
             padding-bottom: 10px;
             margin-bottom: 15px;
         }
+        .logo-container-report {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img-report {
+    height: 60px; /* Ajusta la altura según necesites */
+    margin-right: 15px;
+    /* Si tu logo tiene fondo blanco, puedes quitar el background-color */
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.logo-text-report {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px; /* Reducido para equilibrar con el logo */
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.logo-text-report span {
+    color: var(--f1-accent);
+    display: block;
+    font-size: 12px; /* Reducido para equilibrar con el logo */
+    margin-top: 2px;
+    text-transform: none;
+    letter-spacing: 0.5px;
+}
+
+.report-title {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px; /* Reducido para equilibrar con el logo */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    text-align: center;
+}
+.btn-action {
+        background-color: var(--f1-red);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .btn-action:hover {
+        background-color: #c10500;
+        transform: translateY(-2px);
+    }
+    
+    .btn-pdf {
+        background-color: #d93025;
+    }
+    
+    .btn-pdf:hover {
+        background-color: #b31412;
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+    
+    @media print {
+        .action-buttons {
+            display: none !important;
+        }
+    }
+        
+        
     </style>
 </head>
 <body>
@@ -1694,29 +1777,7 @@
                     <img id="previewEngine" class="photo-preview">
                 </div>
                 
-                <div class="form-group">
-                    <label for="photoInterior1">Foto interior 1 (Tablero):</label>
-                    <input type="file" id="photoInterior1" class="photo-upload" accept="image/*">
-                    <img id="previewInterior1" class="photo-preview">
-                </div>
                 
-                <div class="form-group">
-                    <label for="photoInterior2">Foto interior 2 (Asientos):</label>
-                    <input type="file" id="photoInterior2" class="photo-upload" accept="image/*">
-                    <img id="previewInterior2" class="photo-preview">
-                </div>
-                
-                <div class="form-group">
-                    <label for="photoInterior3">Foto interior 3 (Kilometraje):</label>
-                    <input type="file" id="photoInterior3" class="photo-upload" accept="image/*">
-                    <img id="previewInterior3" class="photo-preview">
-                </div>
-                
-                <div class="form-group">
-                    <label for="photoInterior4">Foto interior 4 (Llanta repuesto):</label>
-                    <input type="file" id="photoInterior4" class="photo-upload" accept="image/*">
-                    <img id="previewInterior4" class="photo-preview">
-                </div>
                 
                 <div class="form-group">
                     <label for="observations">Observaciones del Perito:</label>
@@ -1905,7 +1966,7 @@
                     <div class="header-content">
                         <div class="logo-container">
                             <div class="logo-img">LOGO</div>
-                            <div class="logo-text">PeritoExpert<br><span>Expertos en peritaje automotriz</span></div>
+                            <img src="Logo2.png" alt="Logo PeritoExpert" class="logo-img-report">
                         </div>
                         <div>
                             <h1 class="report-title">Informe de Inspección Técnica</h1>
@@ -2194,7 +2255,7 @@
             </div>
         </div>
     </div>
-    <p class="criteria-note">El vehículo inspeccionado obtuvo una calificación global del 71.80%</p>
+    <p class="criteria-note"></p>
 </div>
                         
                         
@@ -2242,6 +2303,19 @@
                     </div>
                     <div>Este informe es confidencial y propiedad de PeritoExpert. Su distribución está sujeta a autorización.</div>
                 </div>
+                <div class="action-buttons" style="display: flex; justify-content: center; gap: 15px; margin: 30px 0;">
+    <button onclick="printReport()" class="btn-action">
+        <i class="fas fa-print"></i> Imprimir
+    </button>
+    <button onclick="saveAsPDF()" class="btn-action btn-pdf">
+        <i class="fas fa-file-pdf"></i> Guardar como PDF
+    </button>
+    <button onclick="newEvaluation()" class="btn-action btn-secondary">
+        <i class="fas fa-plus"></i> Nueva Evaluación
+    </button>
+    
+</div>
+                
             `;
             
             // Insertar HTML en el contenedor del informe
@@ -2380,7 +2454,37 @@
                     reader.readAsDataURL(this.files[0]);
                 }
             });
+            
         });
+         function printReport() {
+        window.print();
+    }
+    
+    function saveAsPDF() {
+        alert('Función de guardar como PDF. En una implementación real, se usaría una librería como jsPDF o html2pdf.js');
+        // Aquí iría el código para convertir el HTML a PDF
+    }
+    
+    function newEvaluation() {
+        if(confirm('¿Está seguro de que desea comenzar una nueva evaluación? Se perderán los datos actuales.')) {
+            document.getElementById('report-preview').style.display = 'none';
+            document.getElementById('evaluationForm').style.display = 'block';
+            document.getElementById('evaluationForm').reset();
+            
+            // Reiniciar navegación
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelector('[data-section="section-1"]').classList.add('active');
+            
+            // Reiniciar secciones
+            document.querySelectorAll('.form-section').forEach(section => section.classList.remove('active'));
+            document.getElementById('section-1').classList.add('active');
+            
+            // Reiniciar progreso
+            document.getElementById('global-progress').style.width = '0%';
+            document.getElementById('progress-text').textContent = '0%';
+        }
+    }
+        
     </script>
 </body>
 </html>
