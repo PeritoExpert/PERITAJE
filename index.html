@@ -835,15 +835,6 @@
                     <input type="text" id="fasecoldaValue" placeholder="Valor en pesos">
                 </div>
                 
-                <div class="form-group">
-                    <label for="marketPrice">Mercado:</label>
-                    <input type="text" id="marketPrice" placeholder="Valor en pesos">
-                </div>
-
-                <div class="form-group">
-                    <label for="depreciationValue">Depreciación:</label>
-                    <input type="text" id="depreciationValue" placeholder="Valor en pesos">
-                </div>
 
                 <div class="form-group">
                     <label for="expertValue">Peritoexpert.com:</label>
@@ -1095,6 +1086,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="rightFender">Guardafango derecho</label>
+                    <select id="rightFender">
+                        <option value="">Seleccione estado</option>
+                        <option value="Bueno">Bueno</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Malo">Malo</option>
+                        <option value="N/A">No aplica</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="rightSide">Costado derecho</label>
                     <select id="rightSide">
                         <option value="">Seleccione estado</option>
@@ -1106,8 +1108,49 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="leftSide">Costado izquierdo</label>
+                    <select id="leftSide">
+                        <option value="">Seleccione estado</option>
+                        <option value="Bueno">Bueno</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Malo">Malo</option>
+                        <option value="N/A">No aplica</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="leftRearDoor">Puerta trasera izquierda</label>
+                    <select id="leftRearDoor">
+                        <option value="">Seleccione estado</option>
+                        <option value="Bueno">Bueno</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Malo">Malo</option>
+                        <option value="N/A">No aplica</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="rightRearDoor">Puerta trasera derecha</label>
                     <select id="rightRearDoor">
+                        <option value="">Seleccione estado</option>
+                        <option value="Bueno">Bueno</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Malo">Malo</option>
+                        <option value="N/A">No aplica</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rightRearDoor1">Puerta delantera derecha</label>
+                    <select id="rightRearDoor1">
+                        <option value="">Seleccione estado</option>
+                        <option value="Bueno">Bueno</option>
+                        <option value="Regular">Regular</option>
+                        <option value="Malo">Malo</option>
+                        <option value="N/A">No aplica</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="leftRearDoor1">Puerta delantera izquierda</label>
+                    <select id="leftRearDoor1">
                         <option value="">Seleccione estado</option>
                         <option value="Bueno">Bueno</option>
                         <option value="Regular">Regular</option>
@@ -1138,9 +1181,11 @@
                     </select>
                 </div>
 
+                
+
                 <div class="form-group">
-                    <label for="leftRearDoor">Puerta trasera izquierda</label>
-                    <select id="leftRearDoor">
+                    <label for="leftRunningBoard">Estribo izquierdo</label>
+                    <select id="leftRunningBoard">
                         <option value="">Seleccione estado</option>
                         <option value="Bueno">Bueno</option>
                         <option value="Regular">Regular</option>
@@ -1148,9 +1193,8 @@
                         <option value="N/A">No aplica</option>
                     </select>
                 </div>
-
                 <div class="form-group">
-                    <label for="leftRunningBoard">Estribo izquierdo</label>
+                    <label for="ringhtRunningBoard">Estribo derecho</label>
                     <select id="leftRunningBoard">
                         <option value="">Seleccione estado</option>
                         <option value="Bueno">Bueno</option>
@@ -1225,27 +1269,7 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="frontWheels">Ruedas delanteras:</label>
-                    <select id="frontWheels">
-                        <option value="">Seleccione estado</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Malo">Malo</option>
-                        <option value="N/A">N/A</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="rearWheels">Ruedas traseras:</label>
-                    <select id="rearWheels">
-                        <option value="">Seleccione estado</option>
-                        <option value="Bueno">Bueno</option>
-                        <option value="Regular">Regular</option>
-                        <option value="Malo">Malo</option>
-                        <option value="N/A">N/A</option>
-                    </select>
-                </div>
+               
                 
                 <div class="navigation">
                     <button type="button" class="btn btn-secondary" onclick="nextSection(6)">Anterior</button>
@@ -1850,21 +1874,26 @@
             6: [
                 { id: "leftFender", text: "Guardafango izquierdo" },
                 { id: "rightSide", text: "Costado derecho" },
-                { id: "rightRearDoor", text: "Puerta trasera derecha" },
+                { id: "leftSide", text: "Costado izquierdo" },
+                { id: "rightRearDoor", text: "Puerta trasera izquierda" },
+                { id: "leftRearDoor", text: "Puerta trasera derecha" },
+                { id: "rightRearDoor1", text: "Puerta delantera derecha" },
+                { id: "leftRearDoor1", text: "Puerta delantera izquierda" },
                 { id: "rightRunningBoard", text: "Estribo derecho" },
                 { id: "leftSide", text: "Costado izquierdo" },
                 { id: "leftRearDoor", text: "Puerta trasera izquierda" },
                 { id: "leftRunningBoard", text: "Estribo izquierdo" },
+                { id: "ringhtRunningBoard", text: "Estribo derecho" },
                 { id: "frontBumper", text: "Defensa delantera" },
                 { id: "rearBumper", text: "Defensa trasera" },
                 { id: "roof", text: "Techo" }
             ],
+            
             7: [
                 { id: "frontSuspension", text: "Suspensión Delantera" },
                 { id: "rearSuspension", text: "Suspensión Trasera" },
-                { id: "frontWheels", text: "Ruedas delanteras" },
-                { id: "rearWheels", text: "Ruedas traseras" }
             ],
+
             8: [
                 { id: "frontTires", text: "Llantas delanteras" },
                 { id: "rearTires", text: "Llantas traseras" },
@@ -2491,4 +2520,3 @@ function calculateGlobalScore(sectionScores) {
     </script>
 </body>
 </html>
-
