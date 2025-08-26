@@ -2386,58 +2386,61 @@
         }
         
         // Función para calcular puntajes
-        function calculateScores() {
-            const scores = {};
+       function calculateScores() {
+    const scores = {};
+    
+    // Calcular puntuación para cada sección
+    for (const sectionId in sectionQuestions) {
+        if (sectionQuestions.hasOwnProperty(sectionId)) {
+            let totalScore = 0;
+            let answeredQuestions = 0; // Cambiado de totalQuestions a answeredQuestions
             
-            // Calcular puntuación para cada sección
-            for (const sectionId in sectionQuestions) {
-                if (sectionQuestions.hasOwnProperty(sectionId)) {
-                    let totalScore = 0;
-                    let totalQuestions = 0;
-                    
-                    sectionQuestions[sectionId].forEach(question => {
-                        const element = document.getElementById(question.id);
-                        if (!element) return;
-                        
-                        const value = element.value;
-                        let points = 0;
-                        
-                        if (value === 'Bueno' || value === 'Sí') {
-                            points = 100;
-                        } else if (value === 'Regular') {
-                            points = 60;
-                        } else if (value === 'Malo' || value === 'No') {
-                            points = 0;
-                        } else if (value === 'N/A') {
-                            points = 80; // Puntuación media para N/A
-                        }
-                        
-                        totalScore += points;
-                        totalQuestions++;
-                    });
-                    
-                    // Calcular promedio de la sección
-                    scores[sectionId] = totalQuestions > 0 ? Math.round(totalScore / totalQuestions) : 0;
+            sectionQuestions[sectionId].forEach(question => {
+                const element = document.getElementById(question.id);
+                if (!element) return;
+                
+                const value = element.value;
+                let points = 0;
+                
+                if (value === 'Bueno' || value === 'Sí') {
+                    points = 100;
+                    answeredQuestions++; // Solo incrementar si NO es N/A
+                } else if (value === 'Regular') {
+                    points = 60;
+                    answeredQuestions++; // Solo incrementar si NO es N/A
+                } else if (value === 'Malo' || value === 'No') {
+                    points = 0;
+                    answeredQuestions++; // Solo incrementar si NO es N/A
+                } else if (value === 'N/A') {
+                    points = 0;
+                    // NO incrementar answeredQuestions para N/A
                 }
-            }
+                
+                totalScore += points;
+            });
             
-            return scores;
+            // Calcular promedio solo con las preguntas respondidas (no N/A)
+            scores[sectionId] = answeredQuestions > 0 ? Math.round(totalScore / answeredQuestions) : 0;
         }
-        
-        // Función para calcular puntuación global
-        function calculateGlobalScore(sectionScores) {
-            let totalWeightedScore = 0;
-            let totalWeight = 0;
-            
-            for (const section in sectionScores) {
-                if (sectionWeights[section]) {
-                    totalWeightedScore += sectionScores[section] * sectionWeights[section];
-                    totalWeight += sectionWeights[section];
-                }
-            }
-            
-            return totalWeight > 0 ? Math.round(totalWeightedScore / totalWeight) : 0;
+    }
+    
+    return scores;
+}
+
+// La función calculateGlobalScore se mantiene igual
+function calculateGlobalScore(sectionScores) {
+    let totalWeightedScore = 0;
+    let totalWeight = 0;
+    
+    for (const section in sectionScores) {
+        if (sectionWeights[section]) {
+            totalWeightedScore += sectionScores[section] * sectionWeights[section];
+            totalWeight += sectionWeights[section];
         }
+    }
+    
+    return totalWeight > 0 ? Math.round(totalWeightedScore / totalWeight) : 0;
+}
         
         // Configurar previsualización de imágenes
         document.querySelectorAll('.photo-upload').forEach(input => {
@@ -2488,3 +2491,4 @@
     </script>
 </body>
 </html>
+
