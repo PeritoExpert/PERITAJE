@@ -1243,13 +1243,13 @@
                 </div>
             </div>
 
-            <!-- Sección 7: Vida útil amortiguadores -->
+            <!-- Sección 7: Vida útil amortiguadores (MODIFICADA) -->
             <div class="form-section" id="section-7">
                 <h2>Vida útil amortiguadores</h2>
                 
                 <div class="form-group">
-                    <label for="frontSuspension">Suspensión Delantera:</label>
-                    <select id="frontSuspension">
+                    <label for="cylinderCompression">Compresión por cilindro:</label>
+                    <select id="cylinderCompression">
                         <option value="">Seleccione estado</option>
                         <option value="Bueno">Bueno</option>
                         <option value="Regular">Regular</option>
@@ -1259,8 +1259,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="rearSuspension">Suspensión Trasera:</label>
-                    <select id="rearSuspension">
+                    <label for="obdScan">Escaneo OBD-II:</label>
+                    <select id="obdScan">
                         <option value="">Seleccione estado</option>
                         <option value="Bueno">Bueno</option>
                         <option value="Regular">Regular</option>
@@ -1269,13 +1269,18 @@
                     </select>
                 </div>
 
-               
+                <div class="form-group">
+                    <label for="obdCode">Código OBD-II:</label>
+                    <input type="text" id="obdCode" placeholder="Ingrese el código OBD-II correspondiente">
+                </div>
                 
                 <div class="navigation">
                     <button type="button" class="btn btn-secondary" onclick="nextSection(6)">Anterior</button>
                     <button type="button" class="btn" onclick="nextSection(8)">Siguiente</button>
                 </div>
-            </div>    
+            </div>           
+
+
 
             <!-- Sección 8: Llantas -->
             <div class="form-section" id="section-8">
@@ -1821,6 +1826,7 @@
         </div>
     </div>
 
+    
     <script>
         // Variables globales
         let currentSection = 1;
@@ -1840,7 +1846,7 @@
             12: 5   // Prueba de ruta
         };
         
-        // Preguntas para cada sección
+        // Preguntas para cada sección (ACTUALIZADA)
         const sectionQuestions = {
             2: [
                 { id: "soat", text: "SOAT vigente" },
@@ -1873,27 +1879,23 @@
             ],
             6: [
                 { id: "leftFender", text: "Guardafango izquierdo" },
+                { id: "rightFender", text: "Guardafango derecho" },
                 { id: "rightSide", text: "Costado derecho" },
                 { id: "leftSide", text: "Costado izquierdo" },
-                { id: "rightRearDoor", text: "Puerta trasera izquierda" },
-                { id: "leftRearDoor", text: "Puerta trasera derecha" },
-                { id: "rightRearDoor1", text: "Puerta delantera derecha" },
-                { id: "leftRearDoor1", text: "Puerta delantera izquierda" },
-                { id: "rightRunningBoard", text: "Estribo derecho" },
-                { id: "leftSide", text: "Costado izquierdo" },
                 { id: "leftRearDoor", text: "Puerta trasera izquierda" },
+                { id: "rightRearDoor", text: "Puerta trasera derecha" },
+                { id: "rightFrontDoor", text: "Puerta delantera derecha" },
+                { id: "leftFrontDoor", text: "Puerta delantera izquierda" },
+                { id: "rightRunningBoard", text: "Estribo derecho" },
                 { id: "leftRunningBoard", text: "Estribo izquierdo" },
-                { id: "ringhtRunningBoard", text: "Estribo derecho" },
                 { id: "frontBumper", text: "Defensa delantera" },
                 { id: "rearBumper", text: "Defensa trasera" },
                 { id: "roof", text: "Techo" }
             ],
-            
             7: [
-                { id: "frontSuspension", text: "Suspensión Delantera" },
-                { id: "rearSuspension", text: "Suspensión Trasera" },
+                { id: "cylinderCompression", text: "Compresión por cilindro" },
+                { id: "obdScan", text: "Escaneo OBD-II" }
             ],
-
             8: [
                 { id: "frontTires", text: "Llantas delanteras" },
                 { id: "rearTires", text: "Llantas traseras" },
